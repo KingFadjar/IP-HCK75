@@ -1,0 +1,80 @@
+[
+    {
+      "id": 1,
+      "name": "Toyota Avanza",
+      "brand": "Toyota",
+      "type": "MPV",
+      "price_per_day": 350000,
+      "available": true,
+      "imageSrc": "https://imgcdnblog.carbay.com/gallery/2020/05/toyota-avanza-974013.webp",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Honda CR-V",
+      "brand": "Honda",
+      "type": "SUV",
+      "price_per_day": 550000,
+      "available": true,
+      "imageSrc": "https://www.honda-indonesia.com/uploads/news/2021/110920210233243651.jpg",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Mitsubishi Xpander",
+      "brand": "Mitsubishi",
+      "type": "MPV",
+      "price_per_day": 400000,
+      "available": true,
+      "imageSrc": "https://www.mitsubishi-motors.co.id/storage/images/models/new-xpander-qKPz6ssGJD.webp",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Toyota Fortuner",
+      "brand": "Toyota",
+      "type": "SUV",
+      "price_per_day": 750000,
+      "available": false,
+      "imageSrc": "https://cdni.autocarindia.com/ExtraImages/20230224041431_Fortuner.jpg",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    },
+    {
+      "id": 5,
+      "name": "Honda Jazz",
+      "brand": "Honda",
+      "type": "Hatchback",
+      "price_per_day": 300000,
+      "available": true,
+      "imageSrc": "https://cnet4.cbsistatic.com/img/AkQ_f6mOczht8A6FPOpWsxXzkZ4=/1200x675/2021/07/05/7ce2e768-93cf-4b6a-bb18-5e55cbccfaed/ogi-jazz-1900x1500.jpg",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    },
+    {
+      "id": 6,
+      "name": "Daihatsu Terios",
+      "brand": "Daihatsu",
+      "type": "SUV",
+      "price_per_day": 450000,
+      "available": true,
+      "imageSrc": "https://imgcdnblog.carbay.com/gallery/2019/09/daihatsu-terios-484742.jpg",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    },
+    {
+      "id": 7,
+      "name": "Suzuki Ertiga",
+      "brand": "Suzuki",
+      "type": "MPV",
+      "price_per_day": 380000,
+      "available": true,
+      "imageSrc": "https://suzukijakarta.com/wp-content/uploads/2022/05/ertiga.png",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    }
+  ]
+  
