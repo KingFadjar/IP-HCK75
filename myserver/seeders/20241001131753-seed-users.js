@@ -1,4 +1,5 @@
 'use strict';
+const bcrypt = require('bcryptjs');
 
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -6,7 +7,7 @@ module.exports = {
       {
         username: 'admin',
         email: 'admin@example.com',
-        password: '$2a$10$K0wBtEfOvqAdoZ5X3JPh5ew9DxYrBiZJ7VQlA8LQyG1w.u9uV/.72', // hashed password 'admin123'
+        password: await bcrypt.hash('admin123', 10),  // Hash password 'admin123'
         role: 'admin',
         blacklisted: false,
         createdAt: new Date(),
@@ -15,12 +16,12 @@ module.exports = {
       {
         username: 'user1',
         email: 'user1@example.com',
-        password: '$2a$10$K0wBtEfOvqAdoZ5X3JPh5ew9DxYrBiZJ7VQlA8LQyG1w.u9uV/.72', // hashed password 'user123'
+        password: await bcrypt.hash('user123', 10),   // Hash password 'user123'
         role: 'user',
         blacklisted: false,
         createdAt: new Date(),
         updatedAt: new Date()
-      },
+      }
     ]);
   },
 
