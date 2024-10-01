@@ -4,14 +4,10 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Car extends Model {
     static associate(models) {
-      // Relasi dengan model User (misalnya: pengguna bisa merental mobil)
       Car.belongsTo(models.User, {
         foreignKey: 'userId',
         as: 'user',
       });
-
-      // Relasi lain jika diperlukan
-      Car.hasMany(models.Rental, { foreignKey: 'carId', as: 'rentals' });
     }
   }
 
@@ -27,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       type: {
         type: DataTypes.STRING,
-        allowNull: true, // Optional
+        allowNull: true,
       },
       price_per_day: {
         type: DataTypes.INTEGER,

@@ -1,4 +1,14 @@
-const { Car, User } = require("../models");
+const { Car } = require('../models');
+
+// Fungsi untuk mendapatkan semua mobil (semua user bisa melihat)
+exports.getCars = async (req, res) => {
+  try {
+    const cars = await Car.findAll();
+    res.status(200).json({ cars });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 // Fungsi untuk menambah mobil (hanya bisa dilakukan oleh admin)
 exports.addCar = async (req, res) => {
@@ -20,16 +30,6 @@ exports.addCar = async (req, res) => {
     });
 
     res.status(201).json({ message: "Car added successfully", car });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-// Fungsi untuk melihat semua mobil (semua user bisa melihat)
-exports.getAllCars = async (req, res) => {
-  try {
-    const cars = await Car.findAll();
-    res.status(200).json({ cars });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -112,7 +112,7 @@ exports.rentCar = async (req, res) => {
   try {
     const { carId } = req.params;
     const { duration, withDriver } = req.body;
-    
+
     // Cari mobil berdasarkan ID
     const car = await Car.findByPk(carId);
 
@@ -146,4 +146,14 @@ exports.rentCar = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
+};
+
+// Ekspor semua fungsi
+module.exports = {
+  getCars, // Pastikan getCars didefinisikan dengan benar
+  addCar,
+  getCarById,
+  updateCar,
+  deleteCar,
+  rentCar,
 };
