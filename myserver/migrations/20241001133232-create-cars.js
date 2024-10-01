@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Cars', {
@@ -26,6 +25,16 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
       },
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users', // Tabel yang direferensikan
+          key: 'id',
+        },
+        allowNull: false,  // NOT NULL constraint
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -38,5 +47,5 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Cars');
-  },
+  }
 };

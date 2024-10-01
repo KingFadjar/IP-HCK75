@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Users', {
@@ -23,8 +24,7 @@ module.exports = {
       },
       role: {
         type: Sequelize.STRING,
-        defaultValue: 'user', // Bisa admin atau user biasa
-        defaultValue: 'admin',
+        defaultValue: 'user', // Role default adalah 'user', admin bisa diatur secara manual
       },
       blacklisted: {
         type: Sequelize.BOOLEAN,
@@ -40,6 +40,7 @@ module.exports = {
       },
     });
   },
+
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Users');
   },
