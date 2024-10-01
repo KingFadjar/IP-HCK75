@@ -1,0 +1,39 @@
+[
+    {
+      "username": "admin",
+      "email": "admin@example.com",
+      "password": "$2a$10$K0wBtEfOvqAdoZ5X3JPh5ew9DxYrBiZJ7VQlA8LQyG1w.u9uV/.72",
+      "role": "admin",
+      "blacklisted": false,
+      "createdAt": "2024-10-01T00:00:00.000Z",
+      "updatedAt": "2024-10-01T00:00:00.000Z"
+    },
+    {
+      "username": "user1",
+      "email": "user1@example.com",
+      "password": "$2a$10$K0wBtEfOvqAdoZ5X3JPh5ew9DxYrBiZJ7VQlA8LQyG1w.u9uV/.72",
+      "role": "user",
+      "blacklisted": false,
+      "createdAt": "2024-10-01T00:00:00.000Z",
+      "updatedAt": "2024-10-01T00:00:00.000Z"
+    },
+    {
+      "username": "user2",
+      "email": "user2@example.com",
+      "password": "$2a$10$K0wBtEfOvqAdoZ5X3JPh5ew9DxYrBiZJ7VQlA8LQyG1w.u9uV/.72",
+      "role": "user",
+      "blacklisted": false,
+      "createdAt": "2024-10-01T00:00:00.000Z",
+      "updatedAt": "2024-10-01T00:00:00.000Z"
+    },
+    {
+      "username": "blacklistedUser",
+      "email": "blacklisted@example.com",
+      "password": "$2a$10$K0wBtEfOvqAdoZ5X3JPh5ew9DxYrBiZJ7VQlA8LQyG1w.u9uV/.72",
+      "role": "user",
+      "blacklisted": true,
+      "createdAt": "2024-10-01T00:00:00.000Z",
+      "updatedAt": "2024-10-01T00:00:00.000Z"
+    }
+  ]
+  
