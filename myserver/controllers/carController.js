@@ -147,13 +147,3 @@ exports.rentCar = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-// Ekspor semua fungsi
-module.exports = {
-  getCars, // Pastikan getCars didefinisikan dengan benar
-  addCar,
-  getCarById,
-  updateCar,
-  deleteCar,
-  rentCar,
-};

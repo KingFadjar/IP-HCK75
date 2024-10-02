@@ -2,7 +2,7 @@ const { User } = require("../models");
 const bcrypt = require("bcryptjs");
 
 // Fungsi untuk melihat semua user (hanya bisa diakses oleh admin)
-exports.getAllUsers = async (req, res) => {
+exports.getUsers = async (req, res) => {
   try {
     // Cek apakah user yang login adalah admin
     if (req.user.role !== "admin") {
