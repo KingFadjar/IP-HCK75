@@ -1,24 +1,26 @@
-API Documentation for Rental Mobil
-Base URL
-bash
+# Dokumentasi API Rental Mobil
 
-http://localhost:3000/api
-Authentication Routes
-1. Register User/Admin
-Endpoint: /auth/register
-Method: POST
-Description: Mendaftarkan user baru (user atau admin)
-Request Body:
-json
+## 1. Registrasi Pengguna
 
+### Endpoint
+
+POST /api/auth/register
+
+
+### Deskripsi
+Endpoint ini digunakan untuk mendaftar pengguna baru.
+
+### Body Request
+```json
 {
   "username": "string",
   "email": "string",
   "password": "string",
-  "role": "string"  // Optional, defaults to "user". Can be "admin"
+  "role": "string" // Optional, default: "user"
 }
-Response:
-json
+
+Respons
+201 Created: Pengguna berhasil didaftarkan.
 
 {
   "message": "User registered successfully",
@@ -29,219 +31,175 @@ json
     "role": "string"
   }
 }
-2. Login User/Admin
-Endpoint: /auth/login
-Method: POST
-Description: Melakukan login dengan email dan password
-Request Body:
-json
+
+500 Internal Server Error: Terjadi kesalahan saat mendaftar.
+
+2. Login Pengguna
+
+Endpoint
+
+POST /api/auth/login
+
+Deskripsi
+Endpoint ini digunakan untuk login pengguna dan mendapatkan token akses.
+
+Body Request
 
 {
   "email": "string",
   "password": "string"
 }
-Response:
-json
+
+Respons
+200 OK: Login berhasil dan token diberikan.
 
 {
-  "message": "Login Successful",
-  "token": "string"
+  "message": "Login successful",
+  "token": "string",
+  "user": {
+    "id": "integer",
+    "username": "string",
+    "email": "string",
+    "role": "string"
+  }
 }
-3. Admin Access Check
-Endpoint: /auth/admin
-Method: GET
-Description: Cek apakah user adalah admin (hanya untuk admin)
-Headers: Authorization: Bearer {token}
-Response:
-json
+
+401 Unauthorized: Kredensial tidak valid.
+404 Not Found: Pengguna tidak ditemukan atau di-blacklist.
+
+3. Mendapatkan Profil Pengguna
+
+Endpoint
+
+GET /api/users/profile
+
+Deskripsi
+Endpoint ini digunakan untuk mendapatkan informasi profil pengguna yang sedang login.
+
+Header
+Authorization: Bearer YOUR_ACCESS_TOKEN
+
+Respons
+200 OK: Mengembalikan profil pengguna.
 
 {
-  "message": "Welcome Admin, you have access!"
-}
-4. User Access Check
-Endpoint: /auth/user
-Method: GET
-Description: Cek apakah user adalah user biasa (user atau admin)
-Headers: Authorization: Bearer {token}
-Response:
-json
-
-{
-  "message": "Welcome {username}, you have access!"
-}
-User Management Routes (Admin Only)
-1. Get All Users
-Endpoint: /users
-Method: GET
-Description: Mendapatkan daftar semua pengguna (hanya admin)
-Headers: Authorization: Bearer {token}
-Response:
-json
-
-[
-  {
+  "user": {
     "id": "integer",
     "username": "string",
     "email": "string",
     "role": "string",
     "blacklisted": "boolean"
   }
-]
-2. Get User by ID
-Endpoint: /users/:id
-Method: GET
-Description: Mendapatkan informasi pengguna berdasarkan ID (hanya admin)
-Headers: Authorization: Bearer {token}
-Response:
-json
-
-{
-  "id": "integer",
-  "username": "string",
-  "email": "string",
-  "role": "string",
-  "blacklisted": "boolean"
 }
-3. Update User Info
-Endpoint: /users/:id
-Method: PUT
-Description: Memperbarui informasi pengguna (admin bisa memperbarui semua pengguna, user bisa memperbarui dirinya sendiri)
-Headers: Authorization: Bearer {token}
-Request Body:
-json
 
-{
-  "username": "string",  // Optional
-  "email": "string",     // Optional
-  "password": "string"   // Optional
-}
-Response:
-json
+401 Unauthorized: Token tidak valid.
 
-{
-  "message": "User updated successfully",
-  "user": {
-    "id": "integer",
-    "username": "string",
-    "email": "string"
-  }
-}
-4. Blacklist User
-Endpoint: /users/blacklist/:id
-Method: PUT
-Description: Mem-blacklist pengguna (hanya admin)
-Headers: Authorization: Bearer {token}
-Response:
-json
 
-{
-  "message": "User blacklisted successfully"
-}
-5. Delete User
-Endpoint: /users/:id
-Method: DELETE
-Description: Menghapus pengguna berdasarkan ID (hanya admin)
-Headers: Authorization: Bearer {token}
-Response:
-json
+4. Menambah Mobil (Hanya Admin)
 
-{
-  "message": "User deleted successfully"
-}
-Car Management Routes
-1. Get All Cars
-Endpoint: /cars
-Method: GET
-Description: Mendapatkan daftar semua mobil rental yang tersedia
-Headers: Authorization: Bearer {token} (Optional for public access)
-Response:
-json
+Endpoint
+POST /api/cars/add
 
-[
-  {
-    "id": "integer",
-    "name": "string",
-    "brand": "string",
-    "type": "string",
-    "price_per_day": "integer",
-    "available": "boolean"
-  }
-]
-2. Get Car by ID
-Endpoint: /cars/:id
-Method: GET
-Description: Mendapatkan detail mobil rental berdasarkan ID
-Headers: Authorization: Bearer {token} (Optional for public access)
-Response:
-json
+Deskripsi
+Endpoint ini digunakan untuk menambah mobil baru ke dalam daftar.
 
-{
-  "id": "integer",
-  "name": "string",
-  "brand": "string",
-  "type": "string",
-  "price_per_day": "integer",
-  "available": "boolean"
-}
-3. Add New Car (Admin Only)
-Endpoint: /cars
-Method: POST
-Description: Admin menambah mobil baru untuk rental
-Headers: Authorization: Bearer {token}
-Request Body:
-json
+Header
+Authorization: Bearer YOUR_ADMIN_TOKEN
 
+Body Request
 {
   "name": "string",
   "brand": "string",
   "type": "string",
   "price_per_day": "integer"
 }
-Response:
-json
+
+Respons
+201 Created: Mobil berhasil ditambahkan.
 
 {
-  "message": "Car added successfully",
-  "car": {
-    "id": "integer",
-    "name": "string",
-    "brand": "string",
-    "type": "string",
-    "price_per_day": "integer"
-  }
+  "message": "Car added successfully"
 }
-4. Update Car Information (Admin Only)
-Endpoint: /cars/:id
-Method: PUT
-Description: Admin memperbarui detail mobil
-Headers: Authorization: Bearer {token}
-Request Body:
-json
+
+403 Forbidden: Akses ditolak, hanya admin yang bisa menambah mobil.
+500 Internal Server Error: Terjadi kesalahan saat menambah mobil.
+
+5. Mendapatkan Daftar Mobil
+
+Endpoint
+GET /api/cars
+
+Deskripsi
+Endpoint ini digunakan untuk mendapatkan daftar semua mobil.
+
+Header
+Authorization: Bearer YOUR_ACCESS_TOKEN
+
+Respons
+200 OK: Mengembalikan daftar mobil.
 
 {
-  "name": "string",       // Optional
-  "brand": "string",      // Optional
-  "type": "string",       // Optional
-  "price_per_day": "integer", // Optional
-  "available": "boolean"  // Optional
+  "cars": [
+    {
+      "id": "integer",
+      "name": "string",
+      "brand": "string",
+      "type": "string",
+      "price_per_day": "integer"
+    }
+  ]
 }
-Response:
-json
 
-{
-  "message": "Car updated successfully"
-}
-5. Delete Car (Admin Only)
-Endpoint: /cars/:id
-Method: DELETE
-Description: Admin menghapus mobil rental
-Headers: Authorization: Bearer {token}
-Response:
-json
+401 Unauthorized: Token tidak valid.
+
+6. Menghapus Mobil (Hanya Admin)
+Endpoint
+
+DELETE /api/cars/delete/:id
+
+Deskripsi
+Endpoint ini digunakan untuk menghapus mobil berdasarkan ID.
+
+Header
+
+Authorization: Bearer YOUR_ADMIN_TOKEN
+
+Respons
+200 OK: Mobil berhasil dihapus.
 
 {
   "message": "Car deleted successfully"
 }
-Notes:
-Authorization: Untuk endpoint yang membutuhkan autentikasi, header Authorization harus dikirimkan seperti ini: Authorization: Bearer {token}.
-Error Handling: Setiap endpoint akan mengembalikan pesan kesalahan dalam format JSON seperti {"message": "error message"} jika terjadi kesalahan.
+
+403 Forbidden: Akses ditolak, hanya admin yang bisa menghapus mobil.
+404 Not Found: Mobil tidak ditemukan.
+500 Internal Server Error: Terjadi kesalahan saat menghapus mobil.
+
+7. Menghapus Pengguna (Hanya Admin)
+Endpoint
+
+DELETE /api/users/:id
+
+Deskripsi
+Endpoint ini digunakan untuk menghapus pengguna berdasarkan ID.
+
+Header
+
+Authorization: Bearer YOUR_ADMIN_TOKEN
+
+Respons
+200 OK: Pengguna berhasil dihapus.
+
+{
+  "message": "User deleted successfully"
+}
+
+403 Forbidden: Akses ditolak, hanya admin yang bisa menghapus pengguna.
+404 Not Found: Pengguna tidak ditemukan.
+500 Internal Server Error: Terjadi kesalahan saat menghapus pengguna.
+
+
+### Cara Melihat Dokumentasi dengan Rapi
+- **Markdown Preview**: Jika Anda menggunakan editor yang mendukung Markdown, seperti VSCode, Anda dapat membuka file Markdown dan menggunakan fitur preview untuk melihat formatnya dengan baik.
+- **Static Site Generators**: Anda dapat menggunakan generator situs statis seperti Jekyll atau Hugo untuk menghasilkan situs web dari dokumentasi Markdown Anda.
+- **Dokumentasi API Tools**: Anda juga bisa menggunakan alat seperti Swagger atau Postman untuk mendokumentasikan API dan menghasilkan antarmuka pengguna interaktif.
