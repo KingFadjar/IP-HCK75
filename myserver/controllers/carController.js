@@ -178,10 +178,9 @@ exports.getCheapestCarRecommendation = async (req, res) => {
     // Ambil hasil dari API
     const recommendation = response.data; // Sesuaikan dengan format respons API
 
-    // Pastikan response dalam bentuk JSON
     res.status(200).json({
       message: "Cheapest car recommendation generated successfully.",
-      recommendation: recommendation // Format rekomendasi yang diterima dari API
+      recommendation: recommendation
     });
 
   } catch (error) {
