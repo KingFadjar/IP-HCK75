@@ -21,15 +21,37 @@ let adminToken;
 
 // Test suite
 describe('Rental Mobil API', () => {
+  
+  // Persiapan data sebelum semua tes dijalankan
+  beforeAll(async () => {
+    // Buat pengguna admin
+    await request(app)
+      .post('/api/auth/register')
+      .send({
+        username: 'fajarr',
+        email: 'fadjar1113@gmail.com',
+        password: '123456',
+        role: 'admin' // Pastikan untuk menambahkan role admin
+      });
+
+    // Buat pengguna biasa
+    await request(app)
+      .post('/api/auth/register')
+      .send({
+        username: 'user1',
+        email: 'user1@example.com',
+        password: 'user123'
+      });
+  });
 
   // Test untuk registrasi
   test('POST /api/auth/register - harus berhasil mendaftar pengguna baru', async () => {
     const response = await request(app)
       .post('/api/auth/register')
       .send({
-        username: 'user1',
-        email: 'user1@example.com',
-        password: 'user123'
+        username: 'fajarbiasa',
+        email: 'fadjar123@gmail.com',
+        password: '12345'
       });
 
     expect(response.status).toBe(201);
@@ -41,8 +63,8 @@ describe('Rental Mobil API', () => {
     const response = await request(app)
       .post('/api/auth/login')
       .send({
-        email: 'user1@example.com',
-        password: 'user123'
+        email: 'fadjar1112@gmail.com',
+        password: '123456'
       });
 
     expect(response.status).toBe(200);
@@ -58,8 +80,8 @@ describe('Rental Mobil API', () => {
     const response = await request(app)
       .post('/api/auth/login')
       .send({
-        email: 'admin@example.com', // Pastikan admin sudah terdaftar
-        password: 'admin123' // Pastikan password benar
+        email: 'fadjar1112@gmail.com', // Pastikan admin sudah terdaftar
+        password: '123456' // Pastikan password benar
       });
 
     expect(response.status).toBe(200);
@@ -98,8 +120,21 @@ describe('Rental Mobil API', () => {
 
   // Test untuk menghapus mobil
   test('DELETE /api/cars/delete/:id - harus menghapus mobil dengan ID yang valid', async () => {
+    // Tambah mobil untuk dihapus
+    const carResponse = await request(app)
+      .post('/api/cars/add')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({
+        name: 'Mitsubishi Xpander',
+        brand: 'Mitsubishi',
+        type: 'MPV',
+        price_per_day: 400000
+      });
+
+    const carId = carResponse.body.car.id; // Ambil ID mobil yang baru ditambahkan
+
     const response = await request(app)
-      .delete('/api/cars/delete/1') // Ganti 1 dengan ID mobil yang ingin dihapus
+      .delete(`/api/cars/delete/${carId}`) // Ganti dengan ID mobil yang ingin dihapus
       .set('Authorization', `Bearer ${adminToken}`); // Gunakan token admin
 
     expect(response.status).toBe(200);
@@ -118,8 +153,18 @@ describe('Rental Mobil API', () => {
 
   // Test untuk menghapus user
   test('DELETE /api/users/:id - harus menghapus user dengan ID yang valid', async () => {
+    const userResponse = await request(app)
+      .post('/api/auth/register')
+      .send({
+        username: 'user3',
+        email: 'user3@example.com',
+        password: 'user123'
+      });
+
+    const userId = userResponse.body.user.id; // Ambil ID user yang baru ditambahkan
+
     const response = await request(app)
-      .delete('/api/users/1') // Ganti 1 dengan ID user yang ingin dihapus
+      .delete(`/api/users/${userId}`) // Ganti dengan ID user yang ingin dihapus
       .set('Authorization', `Bearer ${adminToken}`); // Gunakan token admin
 
     expect(response.status).toBe(200);

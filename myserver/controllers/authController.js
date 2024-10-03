@@ -1,9 +1,11 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { User } = require("../models");
+const { use } = require("../routes/authRoutes");
 
 // Pastikan JWT_SECRET didefinisikan di .env file atau gunakan default
-const jwtSecret = process.env.JWT_SECRET || "default_jwt_secret_key";
+const jwtSecret = process.env.JWT_SECRET || 'your_jwt_secret_key';
+
 
 // Fungsi Register
 exports.register = async (req, res) => {
@@ -11,13 +13,13 @@ exports.register = async (req, res) => {
     const { username, email, password, role } = req.body;
 
     // Hash password menggunakan bcrypt
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // const hashedPassword = await bcrypt.hash(password, 10);
 
     // Buat user baru (dengan role default 'user' jika tidak diberikan)
     const user = await User.create({
       username,
       email,
-      password: hashedPassword,
+      password: password,
       role: role || "user", // Default role adalah 'user', admin bisa di-set manual
       blacklisted: false, // User baru tidak dalam status blacklist
     });
@@ -40,7 +42,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
-
+    
     // Cari user berdasarkan email
     const user = await User.findOne({ where: { email } });
 
@@ -51,9 +53,16 @@ exports.login = async (req, res) => {
       });
     }
 
+    
     // Cek apakah password yang diberikan valid
+    // console.log(user.password, "========");
+    // console.log(password, "========");
+    
+    
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
+      // console.log(isPasswordValid, "========");
+      
       return res.status(401).json({
         message: "Invalid credentials",
       });
