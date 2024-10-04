@@ -1,0 +1,38 @@
+
+.navbar {
+    background-color: #0f172a; /* Warna latar belakang */
+    padding: 20px; /* Padding atas dan bawah */
+    width: 100%; /* Lebar penuh */
+    color: white; /* Warna teks */
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 24px; /* Ukuran font logo */
+  }
+  
+  .nav-links {
+    list-style: none; /* Menghilangkan bullet point */
+    display: flex; /* Mengatur list item dalam satu baris */
+  }
+  
+  .nav-links li {
+    margin-left: 20px; /* Jarak antar link */
+  }
+  
+  .nav-links a {
+    text-decoration: none; /* Menghilangkan garis bawah pada link */
+    color: white; /* Warna teks link */
+    font-size: 16px; /* Ukuran font link */
+    transition: color 0.3s; /* Transisi warna saat hover */
+  }
+  
+  .nav-links a:hover {
+    color: #38bdf8; /* Warna saat hover */
+  }
+  

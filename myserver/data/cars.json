@@ -1,0 +1,80 @@
+[
+    {
+      "id": 1,
+      "name": "Toyota Avanza",
+      "brand": "Toyota",
+      "type": "MPV",
+      "price_per_day": 350000,
+      "available": true,
+      "imageSrc": "RenCars/public/src/assets/daihatsu-Terios.jpeg",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Honda CR-V",
+      "brand": "Honda",
+      "type": "SUV",
+      "price_per_day": 550000,
+      "available": true,
+      "imageSrc": "RenCars/public/src/assets/Honda-CR-V.jpg",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Mitsubishi Xpander",
+      "brand": "Mitsubishi",
+      "type": "MPV",
+      "price_per_day": 400000,
+      "available": true,
+      "imageSrc": "RenCars/public/src/assets/Mitsubishi-Xpander.jpeg",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Toyota Fortuner",
+      "brand": "Toyota",
+      "type": "SUV",
+      "price_per_day": 750000,
+      "available": false,
+      "imageSrc": "RenCars/public/src/assets/Toyota-Fortuner.jpeg",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    },
+    {
+      "id": 5,
+      "name": "Honda Jazz",
+      "brand": "Honda",
+      "type": "Hatchback",
+      "price_per_day": 300000,
+      "available": true,
+      "imageSrc": "RenCars/public/src/assets/honda-jazz.jpg",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    },
+    {
+      "id": 6,
+      "name": "Daihatsu Terios",
+      "brand": "Daihatsu",
+      "type": "SUV",
+      "price_per_day": 450000,
+      "available": true,
+      "imageSrc": "RenCars/public/src/assets/daihatsu-Terios.jpeg",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    },
+    {
+      "id": 7,
+      "name": "Suzuki Ertiga",
+      "brand": "Suzuki",
+      "type": "MPV",
+      "price_per_day": 380000,
+      "available": true,
+      "imageSrc": "RenCars/public/src/assets/suzuki-ertiga.jpeg",
+      "createdAt": "2024-09-25T12:34:56.000Z",
+      "updatedAt": "2024-09-25T12:34:56.000Z"
+    }
+  ]
+  

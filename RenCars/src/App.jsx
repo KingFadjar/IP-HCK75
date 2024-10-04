@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './components/Auth/Login';
+import Register from './components/Auth/Register';
+import CarList from './components/Cars/CarList';
+import UserList from './components/Users/UserList';
+import NotFound from './pages/NotFound';
+import Navbar from './components/Navbar/Navbar';
+import UserDetails from './components/Users/UserDetails';
+import AddCar from './components/Cars/AddCar'; // Import AddCar
+import CarDetails from './components/Cars/CarDetails'; // Import CarDetails
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      {/* <Navbar /> */}
+      <Routes>
+        <Route path="/" element={<> <Login /> </>} />
+        <>
+        <Route path="/api/auth/register" element={<> <Navbar /> <Register /> </>} />
+        <Route path="/api/cars" element={<> <Navbar /> <CarList /> </>} />
+        <Route path="/api/users" element={<UserList />} />
+        <Route path="/api/cars/add" element={<AddCar />} />
+        <Route path="/api/cars/:id" element={<CarDetails />} />
+        <Route path="/api/users/:id" element={<UserDetails />} />
+        <Route path="*" element={<NotFound />} />
+        </>
+        
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

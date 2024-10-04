@@ -1,0 +1,65 @@
+.wrapper {
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Max width */
+    margin: auto; /* Center the container */
+    padding: 20px;
+    background-color: rgba(30, 41, 59, 0.8); /* Semi-transparent background */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  
+  h1 {
+    color: #38bdf8; /* Light blue color for title */
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #38bdf8; /* Border color */
+    border-radius: 5px;
+    background-color: #334155; /* Input background color */
+    color: #ffffff; /* Input text color */
+    box-sizing: border-box;
+  }
+  
+  input[type="number"]:focus,
+  select:focus {
+    border-color: #ffffff; /* Border color on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #38bdf8; /* Button background color */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0ea5e9; /* Button background color on hover */
+  }
+  
+  p {
+    margin-top: 15px;
+    color: #ffffff; /* Feedback message color */
+  }
+  

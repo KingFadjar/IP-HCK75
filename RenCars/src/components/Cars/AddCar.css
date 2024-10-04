@@ -1,0 +1,62 @@
+.add-car-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(30, 41, 59, 0.8); /* Warna latar belakang */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  background-image: url('/RenCars/public/assets/background.png'); /* Tambahkan gambar latar belakang */
+  background-size: cover; /* Mengisi seluruh area */
+  background-position: center; /* Memposisikan gambar di tengah */
+}
+
+h2 {
+  text-align: center;
+  color: #38bdf8;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="checkbox"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #38bdf8;
+  border-radius: 5px;
+  background-color: #334155; /* Warna latar belakang input */
+  color: #ffffff; /* Warna teks input */
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #38bdf8; /* Warna tombol */
+  color: #ffffff; /* Warna teks tombol */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0ea5e9; /* Warna tombol saat hover */
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+.success {
+  color: green;
+  text-align: center;
+}
