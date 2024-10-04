@@ -5,9 +5,9 @@ const { authenticateUser, authorizeAdmin } = require('../middleware/authMiddlewa
 const router = express.Router();
 
 // Endpoint untuk homepage
-router.get('/', (req, res) => {
-  res.status(200).send('Welcome to the Rental Mobil Homepage');
-});
+// router.get('/', (req, res) => {
+//   res.status(200).send('Welcome to the Rental Mobil Homepage');
+// });
 
 // Endpoint untuk mendapatkan daftar semua pengguna (hanya bisa diakses oleh admin)
 router.get('/users', authenticateUser, authorizeAdmin, getUsers);

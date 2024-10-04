@@ -1,6 +1,8 @@
 const axios = require('axios');
 const { Car } = require('../models');
 
+const dotenv = require('dotenv')
+dotenv.config()
 const GOOGLE_AI_API_KEY = process.env.GOOGLE_AI_API_KEY; // Ambil kunci API dari environment variable
 
 // Fungsi untuk mendapatkan semua mobil (semua user bisa melihat)
@@ -167,11 +169,17 @@ exports.getCheapestCarRecommendation = async (req, res) => {
     const prompt = `Dari daftar mobil berikut, rekomendasikan harga terendah untuk mobil sewa: ${carPrices}`;
 
     // Panggil API Google Gemini
+    console.log(GOOGLE_AI_API_KEY, "==============");
+
     const response = await axios.post(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GOOGLE_AI_API_KEY}`,
       {
-        prompt,
-        maxTokens: 50, // Jumlah maksimum token yang ingin dihasilkan
+        // Periksa apakah format ini sesuai dengan spesifikasi API
+        input: {
+          text: prompt,
+          maxTokens: 50,
+          temperature: 0.5
+        }
       }
     );
 
@@ -184,7 +192,10 @@ exports.getCheapestCarRecommendation = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Error fetching cheapest car recommendation:', error);
+    console.error('Error fetching cheapest car recommendation:', error.response ? error.response.data : error.message);
     res.status(500).json({ message: "Internal Server Error", error: error.message });
   }
 };
+
+
+
