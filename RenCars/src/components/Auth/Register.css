@@ -1,0 +1,92 @@
+.wrapper {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #0f172a; /* Warna latar belakang gelap */
+    background-image: url('/RenCars/src/assets/background.png'); /* Gambar latar belakang */
+    background-size: cover; /* Mengisi seluruh area */
+    background-position: center; /* Memposisikan gambar di tengah */
+}
+
+.container {
+    width: 90%; /* Lebar kontainer responsif */
+    max-width: 400px; /* Lebar maksimum kontainer */
+    padding: 20px;
+    background-color: rgba(30, 41, 59, 0.8); /* Warna latar belakang kontainer dengan transparansi */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    text-align: center;
+    margin: auto; /* Memusatkan kontainer secara vertikal */
+}
+
+h1 {
+    color: #38bdf8; /* Warna biru terang untuk judul */
+    margin-bottom: 20px;
+}
+
+img {
+    width: 120px; /* Ukuran logo yang lebih besar */
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #38bdf8; /* Warna border */
+    border-radius: 5px;
+    background-color: #334155; /* Warna latar belakang input */
+    color: #ffffff; /* Warna teks input */
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #ffffff; /* Warna border saat fokus */
+    outline: none; /* Menghilangkan outline default */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #38bdf8; /* Warna latar belakang tombol */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0ea5e9; /* Warna latar belakang tombol saat hover */
+}
+
+#message {
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+    .container {
+        width: 90%; /* 90% width for smaller screens */
+    }
+}

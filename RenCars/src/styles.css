@@ -1,0 +1,87 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0f172a;
+    color: #ffffff;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgba(30, 41, 59, 0.8);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin: auto;
+}
+
+h1 {
+    color: #38bdf8;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #38bdf8;
+    border-radius: 5px;
+    background-color: #334155;
+    color: #ffffff;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #38bdf8;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0ea5e9;
+}
+
+.car-list,
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.car-card,
+.user-card {
+    width: 30%;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #38bdf8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.pagination button:hover {
+    background-color: #0ea5e9;
+}
